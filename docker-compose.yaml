@@ -7,7 +7,7 @@ networks:
 services:
   mongodb:
     image: monnishreddy2003/mongodb:v1
-    container_name: mongobd
+    container_name: mongodb
   catalogue:
     image: monnishreddy2003/catalogue:v1
     container_name: catalogue
@@ -21,7 +21,7 @@ services:
     container_name: user
     depends_on:
       - redis
-      - mongobd
+      - mongodb
   cart:
     image: monnishreddy2003/cart:v1
     container_name: cart
