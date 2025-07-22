@@ -4,10 +4,10 @@ networks:
     name: roboshop
     #external: true
 volumes:
-  - mongodb:
-  - rabbitmq:
-  - mysql:
-  - redis:
+  mongodb:
+  rabbitmq:
+  mysql:
+  redis:
 
 services:
   mongodb:
