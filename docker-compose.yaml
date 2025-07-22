@@ -1,0 +1,39 @@
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: true
+
+services:
+  mongodb:
+    image: monnishreddy2003/mongodb:v1
+    container_name: mongobd
+  catalogue:
+    image: monnishreddy2003/catalogue:v1
+    container_name: catalogue
+    depends_on:
+      - mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  user:
+    image: monnishreddy2003/user:v1
+    container_name: user
+    depends_on:
+      - redis
+      - mongobd
+  cart:
+    image: monnishreddy2003/cart:v1
+    container_name: cart
+    depends_on:
+      - catalogue
+  mysql:
+    image: monnishreddy2003/mysql:v1
+    container_name: mysql
+  shipping:
+    image: monnishreddy2003/shipping:v1
+    container_name: shipping
+    depends_on:
+      - mysql
+      - cart
+  
